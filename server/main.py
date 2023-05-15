@@ -19,13 +19,13 @@ def registro():
     email = generar_mail(nombre, apellido)
     contra = generar_contra (nombre,apellido)
     
-    registro = pd.DataFrame({'Nombre': [nombre], 'Apellido': [apellido], 'Correo electrónico': [email], 'Contraseña':[contra]})
+    registros = pd.DataFrame({'Nombre': [nombre], 'Apellido': [apellido], 'Correo electrónico': [email], 'Contraseña':[contra]})
 
     try:
         archivo_csv = pd.read_csv('registros.csv')
         archivo_csv = archivo_csv.append(registro, ignore_index=True)
     except:
-        archivo_csv = registro
+        archivo_csv = registros
 
     archivo_csv.to_csv('registros.csv', index=False)
 
